@@ -8,10 +8,14 @@ public class Enemy : MonoBehaviour
 
     private Transform target;
     private int wavepointIndex = 0;
+    private GameObject gameMaster;
 
     void Start()
     {
+        gameMaster = GameObject.Find("GameMaster");
+
         target = Waypoints.points[0];
+        speed += gameMaster.GetComponent<WaveSpawner>().waveIndex;
     }
 
     public void TakeDamage(int amout)
